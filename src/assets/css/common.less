@@ -1,0 +1,75 @@
+/*
+ * #### 公共样式
+ */
+body{
+    text-align: center;
+}
+/*
+ * #### 清除浮动
+ */
+.clearfix {
+    &:after {
+        clear: both;
+        content: '.';
+        display: block;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+/*
+* 字体 font-size
+ */
+.font11 {
+    font-size: .22rem;
+}
+.font12 {
+    font-size: .24rem;
+}
+.font14 {
+    font-size: .28rem;
+}
+.font15 {
+    font-size: .3rem;
+}
+.font16 {
+    font-size: .32rem;
+}
+.font18 {
+    font-size: .36rem;
+}
+
+
+/*
+ * #### 横向等比分割
+ */
+.flex-ul {
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+}
+
+.flex-ul li {
+    cursor: pointer;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1; 
+    text-align: center;
+}
+
+.flex-ul.b_l li:last-child {
+    border-left-style: solid;
+    border-left-width: 1px;
+}
