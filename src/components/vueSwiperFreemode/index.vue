@@ -29,32 +29,23 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
     		return {
                 swiperOption: {  
                 	height: 100,                     //你的slide高度
-                	autoplay: true,                  //可选选项，自动滑动
+                	autoplay: false,                  //可选选项，自动滑动
 	                notNextTick: true,               //
-	                //pagination: '.swiper-pagination',//
 	                centeredSlides: true,            //若为真，那么活动块会居中，而非默认状态下的居左...
 	                paginationClickable: true,       //值为真时，当单击指示器时会执行过渡动画到目标slide...
 	                spaceBetween: 10,                //slide之间的距离（单位px）
-	                onSlideChangeEnd: swiper => {    //回调函数，过渡动画结束后执行，即滑块活动停止后执行
-	                    this.page = swiper.realIndex + 1;
-	                    this.index = swiper.realIndex; 
-	                },
                     freeMode : true, 
                     width: 120,
-
                     height: 70,
 
                 } 
     		}
     	},
-        //定义这个sweiper对象  
         computed: {  
-            swiper() {  
-              return this.$refs.mySwiper.swiper;  
-            }  
+
         },  
     	mounted(){
-    		this.swiper.slideTo(0, 0, false);  
+    		
     	},
     	methods: {
 
