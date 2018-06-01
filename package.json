@@ -1,5 +1,5 @@
 {
-  "name": "SalesTool",
+  "name": "dance",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
@@ -68,6 +68,6 @@
     "cp": "cp -r index.html ./build/ d:/wamp/www/vue",
     "ip": "webpack-dev-server --progress --profile --colors --inline --host=10.19.1.35  --port 9003"
   },
-  "author": "wolf front end group",
+  "author": "dance",
   "license": "ISC"
 }
