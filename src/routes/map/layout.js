@@ -5,6 +5,7 @@ const Mv = resolve => require(['views/mv/index.vue'], resolve)                  
 const NationalStandard = resolve => require(['views/nationalStandard/index.vue'], resolve) //国标
 const Latin = resolve => require(['views/latin/index.vue'], resolve) //拉丁
 
+
 export default [
 	{
 		path: '/layout',
