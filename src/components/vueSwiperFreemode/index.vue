@@ -4,7 +4,6 @@
         <swiper-slide v-for="item in 6"> 
             <img src="../../assets/images/res_banner.jpg"> 
         </swiper-slide>  
-        <div class="swiper-pagination" slot="pagination"></div>  
     </swiper>  
 </template>
 <script type="text/babel">

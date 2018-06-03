@@ -13,10 +13,13 @@
 				<span @click="hotItem(item)" class="text font12" v-for="item in hotList">{{ item }}</span>
 			</div>
 		</div>
-		<div class="history hot" v-if="searValueList.length">
+		<div class="history hot">
 			<div class="hot_title font18">
 				搜索历史
-				<div class="clear font12" @click="historyClear">清除记录</div>
+				<div class="clear font12" @click="historyClear">
+                    <img src="../../assets/images/recycling.svg" alt="">
+                    <span>清楚记录</span>
+                </div>
 			</div>
 			<div class="hot_content">
 				<p @click="historyItem(item)" class="text_left font14" v-for="item in historyList">{{ item }}</p>
@@ -136,6 +139,16 @@ export default {
     			right: 0;
     			bottom: 0;
     			margin: auto;
+                img {
+                    width: .24rem;
+                    height: .24rem;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                span {
+                    margin-left: .2rem;
+                }
     		}
     	}
     	.hot_content {

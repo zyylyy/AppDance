@@ -11,15 +11,10 @@
 		</div>
 		<div class="content">
             <router-view></router-view>
-<!--             <transition name="fade">
-                <router-view></router-view>
-            </transition> -->
 		</div>
 	</div>
 </template>
 <script type="text/babel">
-
-
 export default {
 	name: "layout",
 	data(){

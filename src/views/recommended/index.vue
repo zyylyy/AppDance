@@ -11,11 +11,15 @@
 		</div>
 		<div class="swiper">
 			<div class="title">
-				<p class="font14">icon</p>
-				<p class="font16">快报</p>
-				<span class="font14">桑巴国际扭扭腰大赛2018冠军…</span>
-				<p class="font12">更多</p>
-				<p class="font14">icon</p>
+				<p class="font14" style="width: 0.5rem;">
+                    <i class="bulb_icon"></i>            
+                </p>
+				<p class="font16 font_w600" style="margin-left: 0.1rem">快报</p>
+				<p class="font14" style="margin-left: 0.15rem;width: 4.2rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">桑巴国际扭扭腰大赛2018冠11111111111</p>
+				<span class="font12"  style="float: right;width:1.2rem;">
+                    <span>更多</span>
+                    <i class="arrow" style="float: right;margin-top: 0.5rem;"></i>              
+                </span>
 			</div>
 			<div class="swiper_box">
 			     <swiper :options="swiperOption"  ref="mySwiper">  
@@ -37,14 +41,27 @@
 			</div>
 		</div>
 
+        <vue-rank :dataList="[]"></vue-rank>
+        <vue-music :dataList="[]"></vue-music>
+        <vue-students :dataList="[]"></vue-students>
+
+
 	</div>
 </template>
 <script type="text/babel">
 
 import { swiper, swiperSlide } from 'vue-awesome-swiper'  
+import VueRank from './components/rank.vue'
+import vueMusic from './components/music.vue'
+import vueStudents from './components/students.vue'
 
 export default {
 	name: "recommended",
+    components:{
+        VueRank,
+        vueMusic,
+        vueStudents,
+    },
 	data(){
 		return {
 			page: 1,
@@ -58,6 +75,17 @@ export default {
                 onSlideChangeEnd: swiper => {
                     this.page = swiper.realIndex + 1;
                 },
+            },
+            swiperOptionFreeMode: {
+                    height: 100,                     //你的slide高度
+                    autoplay: false,                  //可选选项，自动滑动
+                    notNextTick: true,               //
+                    centeredSlides: true,            //若为真，那么活动块会居中，而非默认状态下的居左...
+                    paginationClickable: true,       //值为真时，当单击指示器时会执行过渡动画到目标slide...
+                    spaceBetween: 10,                //slide之间的距离（单位px）
+                    freeMode : true, 
+                    //width: 100,
+                    height: 100,
             },
 			imgList: [],
 			iconList: ['明星', '会员', '赛事', '音乐', '照片'],
@@ -92,23 +120,46 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+
     .swiper {
-    	.title {
-    		height: 1.12rem;
-    		line-height: 1.12rem;
-    		padding: 0 0.3rem;
-			display:flex;
-			text-align: left;
-			justify-content:center;
-			p {
-				flex:1;
-			}
-    	}
-    	.swiper_box {
-    		    background-color: #f5f5f5;
-    		height: 4.2rem;
-    		padding: 0.2rem 0;
-    	}
+        .title {
+            height: 1.12rem;
+            line-height: 1.12rem;
+            padding: 0 0.3rem;
+            p {
+                float: left;
+                .bulb_icon {
+                    width: 0.5rem;
+                    height: 0.6rem;
+                    display: inline-block;
+                    background-image: url('../../assets/images/bulb.svg');
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                    background-size: 0.5rem .6rem;;
+                    margin-top: 50%;
+                }
+
+            }
+            span {
+                .arrow {
+                    width: 0.06rem;
+                    height: 0.12rem;
+                    display: inline-block;
+                    background-image: url('../../assets/images/arrow.png');
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                    background-size: 0.06rem .12rem;; 
+                } 
+            }
+            .font_w600 {
+                font-weight: 600;
+            }
+        }
+        .swiper_box {
+                background-color: #f5f5f5;
+            height: 4.2rem;
+            padding: 0.2rem 0;
+        }
     }
     .box {
         display:flex;
@@ -117,16 +168,16 @@ export default {
         padding: 0.3rem;
         border-bottom: 0.01rem solid #f5f5f5;
         div {
-        	flex:1;
-        	.icon {
-        		width: 0.88rem;
-        		height: 0.88rem;
-        		border-radius: 0.34rem;
-        		display: inline-block;
-        	}
-        	.text {
-        		color: #666;
-        	}
+            flex:1;
+            .icon {
+                width: 0.88rem;
+                height: 0.88rem;
+                border-radius: 0.34rem;
+                display: inline-block;
+            }
+            .text {
+                color: #666;
+            }
         }
     }
     .swiper-container {
@@ -147,38 +198,38 @@ export default {
             }
         }
         .img_box {
-        	width: 100%;
-        	height: 100%;
-        	position: absolute;
-        	top: 0;
-        	left: 0;
-        	bottom: 0;
-        	right: 0;
-        	padding: 0 0.3rem;
-        	text-align: left;
-        	padding-top: 1.2rem;
-        	.text {
-        		color: #fff;
-        	}
-        	.con {
-        		margin-top: 0.1rem;
-        		color: #fff;
-        	}
-        	.btn {
-        		width: 1.4rem;
-        		height: 0.6rem;
-        		line-height: 0.6rem;
-        		text-align: center;
-        		border-radius: 0.3rem;
-        		background-color: #FFBB3E;
-        		margin-top: 0.5rem;
-        	}
-        	.index {
-        		position: absolute;
-        		bottom: 0.3rem;
-        		right: 0.3rem;
-        		color: #fff;
-        	}
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding: 0 0.3rem;
+            text-align: left;
+            padding-top: 1.2rem;
+            .text {
+                color: #fff;
+            }
+            .con {
+                margin-top: 0.1rem;
+                color: #fff;
+            }
+            .btn {
+                width: 1.4rem;
+                height: 0.6rem;
+                line-height: 0.6rem;
+                text-align: center;
+                border-radius: 0.3rem;
+                background-color: #FFBB3E;
+                margin-top: 0.5rem;
+            }
+            .index {
+                position: absolute;
+                bottom: 0.3rem;
+                right: 0.3rem;
+                color: #fff;
+            }
         }
     }
 </style>
