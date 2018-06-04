@@ -15,43 +15,40 @@
 	</div>
 </template>
 <script type="text/babel">
+
 export default {
 	name: "layout",
 	data(){
 		return {
-			meun_lits: [
-    			{
+			meun_lits: [{
     				name: "推荐",
     				path: "/recommended",
-    			},
-    			{
+    			},{
     				name: "国标舞",
     				path: "/nationalStandard",
-    			},
-    			{
+    			},{
     				name: "拉丁舞",
     				path: "/latin",
-    			},
-    			{
+    			},{
     				name: "MV舞",
     				path: "/mv",
-    			},
-    			{
+    			},{
     				name: "街舞",
     				path: "/streetDance",
-    			},
-			],
+    			}],
 		}
 	},
 	mounted(){
 
 	},
 	methods:{
+        /*切换视图*/
 		toView(item){
-			this.$router.push(item.path)
+			this.$router.push(encodeURI(item.path))
 		},
+        /*跳转搜索*/
         toSearch(){
-            this.$router.push('/search')
+            this.$router.push(encodeURI('/search'))
         },
 	},
 }

@@ -6,6 +6,7 @@
 		  @start="start" 
 		  v-if="dataList.length">
 		</vue-table>
+		
 		<vueUpLoad></vueUpLoad>
 		<vueNoData :isShow="false"></vueNoData>
 	</div>

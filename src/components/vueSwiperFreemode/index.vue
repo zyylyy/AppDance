@@ -1,8 +1,10 @@
 <template>
      <swiper :options="swiperOption"  ref="mySwiper" id="freemode">  
         <!-- 这部分放你要渲染的那些内容 -->  
-        <swiper-slide v-for="item in 6"> 
-            <img src="../../assets/images/res_banner.jpg"> 
+        <swiper-slide v-for="(item, index) in 6"> 
+            <img src="../../assets/images/res_banner.jpg">
+            <div class="model"></div>
+            <span class="text font18">{{ index }}</span>
         </swiper-slide>  
     </swiper>  
 </template>
@@ -57,7 +59,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
         img {
             width: 100%;
             height: 100%;
-            border-radius: 5px;
+            border-radius: .05rem;
         }
         .swiper-pagination {
             .swiper-pagination-bullet {
@@ -73,6 +75,29 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             width: 2.4rem;
             .swiper-slide{
                 width: 2.4rem;
+                position: relative;
+                .model {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                    background-color: #000;
+                    opacity: 0.3;
+                    border-radius: .05rem;
+                }
+                .text {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                    color: #fff;
+                    height: .4rem;
+                    line-height: 0.4rem;
+                }
             }
         }
     }        

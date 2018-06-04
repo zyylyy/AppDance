@@ -16,6 +16,9 @@
 		  v-if="dataList.length"
 		  style="margin-top: .2rem;">
 		</vue-table>
+
+		<vueUpLoad></vueUpLoad>
+		<vueNoData :isShow="false"></vueNoData>
 	</div>
 </template>
 <script type="text/babel">

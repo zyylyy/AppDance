@@ -32,12 +32,12 @@ export default {
 	data(){
 		return {
             swiperOptionFreeMode :{
-                    height: 100,                     //你的slide高度
-                    autoplay: false,                  //可选选项，自动滑动
-                    notNextTick: true,               //
-                    centeredSlides: true,            //若为真，那么活动块会居中，而非默认状态下的居左...
-                    paginationClickable: true,       //值为真时，当单击指示器时会执行过渡动画到目标slide...
-                    spaceBetween: 10,                //slide之间的距离（单位px）
+                    height: 100,
+                    autoplay: false,
+                    notNextTick: true,
+                    centeredSlides: true,
+                    paginationClickable: true,
+                    spaceBetween: 10,
                     freeMode : true, 
                     width: 215,
                     height: 70,

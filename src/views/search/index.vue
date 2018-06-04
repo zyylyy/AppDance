@@ -7,65 +7,59 @@
             </div>
             <span class="close font14" @click='toBack'>取消</span>
 		</div>
-		<div class="hot" v-if="!searValue">
-			<div class="hot_title font18">热门搜索</div>
-			<div class="hot_content clearfix">
-				<span @click="hotItem(item)" class="text font12" v-for="item in hotList">{{ item }}</span>
-			</div>
-		</div>
-		<div class="history hot">
-			<div class="hot_title font18">
-				搜索历史
-				<div class="clear font12" @click="historyClear">
-                    <img src="../../assets/images/recycling.svg" alt="">
-                    <span>清楚记录</span>
-                </div>
-			</div>
-			<div class="hot_content">
-				<p @click="historyItem(item)" class="text_left font14" v-for="item in historyList">{{ item }}</p>
-			</div>
-		</div>
 
-        <!-- <vue-table :dataTable="dataTable" title="搜索结果" v-if="dataTable.length" style="margin-top: 1.3rem;"></vue-table> -->
+        <vue-hot 
+          v-if="!searValue" 
+          @hotItem="loadList">
+        </vue-hot>
+
+        <vue-history  
+          v-if="!searValue" 
+          ref="vueHistory" 
+          @historyItem="loadList">
+        </vue-history>
+
+
+        <vue-table 
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="hasLoading"
+          infinite-scroll-distance="10"
+          :dataTable="dataTable" 
+          title="搜索结果" 
+          v-if="dataTable.length && searValue" 
+          style="margin-top: 1.3rem;">
+        </vue-table>
+        <vueUpLoad :isShow="upLoad" v-if="searValue"></vueUpLoad>
+        <vueNoData :isShow="noData" v-if="searValue"></vueNoData>  
 
 	</div>
 </template>
 <script type="text/babel">
 
 import storage from 'storejs'   
+import vueHot from './components/hot.vue'
+import vueHistory from './components/history.vue'
 
 export default {
 	name: "search",
+    components: {
+        vueHot,
+        vueHistory,
+    },
 	data(){
 		return {
 			searValue: "",
-			hotList: ['华尔兹', '探戈', '狐步', '快币', '维也纳华尔兹', '桑巴', '恰恰', '斗牛'],
-			historyList: ['小女孩跳舞', '袋鼠街舞', '热血街舞团', '这就是街舞'],
             searValueList: [],
-            dataTable: [{
-                type_name: "桑巴",
-                type_describe: "右脚缓步快速连击",
-                status: 0,
-                learn: 999,
-                review: 999,
-                imgUrl: '',
-            },{
-                type_name: "街舞",
-                type: 1,
-                type_describe: "地板舞-托马斯全旋",
-                status: 2,
-                learn: 666,
-                review: 666,
-                imgUrl: '',
-            },{
-                type_name: "桑巴",
-                type: 0,
-                type_describe: "右脚缓步快速连击",
-                status: 2,
-                learn: 999,
-                review: 999,
-                imgUrl: '',
-            }]
+            hasLoading: false,
+            noData: false,
+            upLoad: false,
+            dataTable: [],
+
+            params: {
+                pageSize: 10,
+                page: 1,
+            }
+
 		}
 	},
     watch:{
@@ -74,140 +68,93 @@ export default {
         },
     },
 	mounted(){
-        this.searValueList = storage.get('searValue') ? storage.get('searValue') : []
+        this.getList()
 	},
 	methods: {
-        setSearValue(){
-            //storage.set('searValue',this.searValueList.push(this.searValue))
+        /*子组件调用*/
+        loadList(item){
+            this.searValue = item
+            this.getList()
         },
-        /*
-        **
-        */
+        /*无缝加载数据*/
+        loadMore(){
+            this.getList()
+        },
+        /*获取数据*/
         getList(){
 
+              this.hasLoading = true;
+         
+              setTimeout(() => {
+                for (var i = 0, j = 10; i < j; i++) {
+                  this.dataTable.push({
+                                        type_name: "桑巴",
+                                        type: 0,
+                                        type_describe: "右脚缓步快速连击",
+                                        status: 2,
+                                        learn: 999,
+                                        review: 999,
+                                        imgUrl: '',
+                                    });
+                }
+                this.hasLoading = true;
+              }, 1000);
         },
-		/*
-		** 清空输入框
-		*/
+        setSearValue(){
+            let historyList = storage.get('historyList') ? storage.get('historyList') : []
+            if(historyList.indexOf(this.searValue) >= 0) historyList.push(this.searValue)
+            storage.set('historyList', historyList)
+        },
+		/*清空输入框*/
 		empty(){
             this.searValue = ''
 		},
-		/*
-		** 返回
-		*/
+		/*返回*/
 		toBack(){
             this.$router.go(-1)
-		},
-		/*
-		** 清空历史
-		*/
-		historyClear(){
-
-		},
-		/*
-		** 热门搜索
-		*/
-		hotItem(){
-
-		},
-		/*
-		** 搜索历史
-		*/
-		historyItem(){
-
 		},
 	},
 }
 </script>
 <style lang="less" scoped>
-    .hot {
-    	background-color: #fff;
-    	margin-top: 1.3rem;
-    	padding: 0 .3rem 0.3rem;
-    	.hot_title {
-    		padding: .3rem 0;
-    		text-align: left;
-    		position: relative;
-    		.clear {
-		        display:flex;
-		        justify-content:center;
-    			color: #999;
-    			width: 1.4rem;
-    			height: 0.24rem;
-    			position: absolute;
-    			top: 0;
-    			right: 0;
-    			bottom: 0;
-    			margin: auto;
-                img {
-                    width: .24rem;
-                    height: .24rem;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-                span {
-                    margin-left: .2rem;
-                }
-    		}
-    	}
-    	.hot_content {
-    		.text {
-    			float: left;
-    			height: 0.6rem;
-    			line-height: 0.6rem;
-    			background-color: #EBEBEB;
-    			display: inline-block;
-    			padding: 0 0.3rem;
-    			border-radius: 0.3rem;
-    			margin-right: 0.4rem;
-    			margin-top: 0.2rem;
-    		}
-    		.text_left {
-    			text-align: left;
-    			height: 0.88rem;
-    			line-height: 0.88rem;
-    		}
-    	}
-    }
-    .history {
-    	margin-top: 0;
-    }
-    .search_bax {
-    	color: #999;
-        position: fixed;
-        top: 0rem;
-        z-index: 100;
-        width: 100%;
-        background: #fff;
-        height: 1.3rem;
-        padding: 0 0.3rem;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        .close{
-        	width:0.8rem;
-        	text-align:right;
-        	color:#FFAE3E;
-        }
-        .sertext {
-        	flex:1;
-            background: #f8f8f8 url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
-            background-size: 0.38rem 0.38rem;
-            padding-left: 0.4rem;
-            border-radius: 0.1rem;
-            position:relative;
-            input {
-                width: 88%;
-                height: 0.7rem;
-                -webkit-user-select: auto;
+    .search {
+        background-color: #f5f5f5;
+        .search_bax {
+            color: #999;
+            position: fixed;
+            top: 0rem;
+            z-index: 100;
+            width: 100%;
+            background: #fff;
+            height: 1.3rem;
+            padding: 0 0.3rem;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            .close{
+                width:0.8rem;
+                text-align:right;
+                color:#FFAE3E;
             }
-            img{
-            	position:absolute;
-            	width:0.32rem;
-            	height:0.32rem;
-            	top: 0.2rem;
-            	right:0.25rem;
+            .sertext {
+                flex:1;
+                background: #f8f8f8 url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
+                background-size: 0.38rem 0.38rem;
+                padding-left: 0.4rem;
+                border-radius: 0.1rem;
+                position:relative;
+                input {
+                    width: 88%;
+                    height: 0.7rem;
+                    -webkit-user-select: auto;
+                }
+                img{
+                    position:absolute;
+                    width:0.32rem;
+                    height:0.32rem;
+                    top: 0.2rem;
+                    right:0.25rem;
+                }
             }
         }
     }

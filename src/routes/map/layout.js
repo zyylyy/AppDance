@@ -4,9 +4,14 @@ const streetDance = resolve => require(['views/streetDance/index.vue'], resolve)
 const Mv = resolve => require(['views/mv/index.vue'], resolve)                   //mv
 const NationalStandard = resolve => require(['views/nationalStandard/index.vue'], resolve) //国标
 const Latin = resolve => require(['views/latin/index.vue'], resolve) //拉丁
-
+const detail_national_standard = resolve => require(['views/nationalStandard/detail_national_standard.vue'], resolve) //国标详情
 
 export default [
+    { 
+		path: '/',
+		redirect: '/recommended',
+		component: Layout,
+    },
 	{
 		path: '/layout',
 		name: 'layout',
@@ -21,5 +26,13 @@ export default [
             { path: '/nationalStandard', component: NationalStandard, meta: {title: '首页'}},
             { path: '/latin', component: Latin, meta: {title: '首页'}}
         ],
-	}
+	},
+	{
+		path: '/detail_national_standard',
+		name: 'detail_national_standard',
+		component: detail_national_standard,
+		meta: {
+			title: '详情'
+		},
+	},
 ]
