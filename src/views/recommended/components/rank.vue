@@ -8,7 +8,7 @@
                     <p class="font18">
                         <em style="color:#FFB63E;">{{ index+1 }}&nbsp;&nbsp;</em>
                         <span class="font14" style="color: #000">第一名</span></p>
-                    <p class="font11" style="color:#999;margin-top: .05rem;">伦巴分解动作</p>
+                    <p class="font11" style="color:#999;margin-top: .1rem;">伦巴分解动作</p>
                 </swiper-slide>  
             </swiper>  
         </div>
@@ -47,6 +47,7 @@ export default {
     .rank {
         padding-left: .3rem;
         padding-bottom: .4rem;
+        background-color: #fff;
         .rank_head {
             padding: .5rem .3rem .4rem .3rem;
             text-align: left;

@@ -120,8 +120,11 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+    .recommended {
+            background-color: #f5f5f5
+    }
     .swiper {
+        background-color: #fff;
         .title {
             height: 1.12rem;
             line-height: 1.12rem;
@@ -167,6 +170,7 @@ export default {
         align-items:center;
         padding: 0.3rem;
         border-bottom: 0.01rem solid #f5f5f5;
+        background-color: #fff;
         div {
             flex:1;
             .icon {

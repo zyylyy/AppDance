@@ -42,6 +42,8 @@ export default {
     .students {
         padding-left: .3rem;
         padding-bottom: .4rem;
+        background-color: #fff;
+        margin-top: 0.2rem;
         .students_head {
             padding: .5rem .3rem .4rem .3rem;
             text-align: left;

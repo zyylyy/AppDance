@@ -10,7 +10,13 @@
 	        </div>
 		</div>
 
-		<vue-table :dataTable="dataList" title="最新教学" @start="start" v-if="dataList.length"></vue-table>
+		<vue-table 
+		  :dataTable="dataList" 
+		  title="最新教学" 
+		  @start="start" 
+		  v-if="dataList.length"
+		  style="margin-top: .2rem;">
+		</vue-table>
 	</div>
 </template>
 <script type="text/babel">
@@ -58,6 +64,7 @@ export default {
 </script>
 <style lang="less" scoped>
     .national_standard {
+    	background-color: #f5f5f5;
 		.panel {
 			background-color: #fff;
 			.panel-header {

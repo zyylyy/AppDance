@@ -1,6 +1,13 @@
 <template>
 	<div class="mv">
-		<vue-table :dataTable="dataList" title="最热教学" @start="start" v-if="dataList.length"></vue-table>
+		<vue-table 
+		  :dataTable="dataList" 
+		  title="最热教学" 
+		  @start="start" 
+		  v-if="dataList.length">
+		</vue-table>
+		<vueUpLoad></vueUpLoad>
+		<vueNoData :isShow="false"></vueNoData>
 	</div>
 </template>
 <script type="text/babel">
@@ -47,6 +54,6 @@ export default {
 </script>
 <style lang="less" scoped>
     .mv {
-    	
+    	background-color: #f5f5f5;
     }
 </style>

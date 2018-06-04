@@ -49,7 +49,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 <style lang="less" scoped>
     .swiper-container {
         height: 100%;
-        background-color: #fff;
+        background: #fff;
         img {
             width: 100%;
             height: 100%;

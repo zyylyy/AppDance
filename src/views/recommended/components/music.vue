@@ -50,6 +50,8 @@ export default {
     .music {
         padding-left: .3rem;
         padding-bottom: .4rem;
+        background-color: #fff;
+        margin-top: 0.2rem;
         .music_head {
             padding: .5rem .3rem .4rem .3rem;
             text-align: left;
