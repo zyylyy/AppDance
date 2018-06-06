@@ -12,6 +12,9 @@
 
         <select-table :dataList="[]"></select-table>
 
+        <vueUpLoad style="margin-bottom: 1rem;"></vueUpLoad>
+        <vueNoData :isShow="false"></vueNoData>
+
         <div class="footer_btn">
             <div class="icon"></div>
         </div>
