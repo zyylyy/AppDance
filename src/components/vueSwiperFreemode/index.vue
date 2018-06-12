@@ -1,27 +1,33 @@
 <template>
      <swiper :options="swiperOption"  ref="mySwiper" id="freemode">  
         <!-- 这部分放你要渲染的那些内容 -->  
-        <swiper-slide v-for="(item, index) in 6"> 
-            <img src="../../assets/images/res_banner.jpg">
-            <div class="model"></div>
-            <span class="text font18">{{ index }}</span>
+        <swiper-slide v-for="(item, index) in imgList"> 
+            <img :src="item.itemUrl" >
+<!--             <div class="model"></div>
+            <span class="text font18">{{ index }}</span> -->
         </swiper-slide>  
     </swiper>  
 </template>
 <script type="text/babel">
 
+import slide01 from '../../assets/images/img/slide01.png'
+import slide02 from '../../assets/images/img/slide02.png'
+import slide03 from '../../assets/images/img/slide03.png'
+import slide04 from '../../assets/images/img/slide04.png'
+import slide05 from '../../assets/images/img/slide05.png'
+
 import { swiper, swiperSlide } from 'vue-awesome-swiper'  
 
     export default {
     	name: "vueSwiperFreemode",
-    	props:{
-    		imgList:{
-    			type: Array,
-    			default:function(){
-    				return []
-    			}
-    		},
-    	},
+    	// props:{
+    	// 	imgList:{
+    	// 		type: Array,
+    	// 		default:function(){
+    	// 			return []
+    	// 		}
+    	// 	},
+    	// },
     	components: {  
             swiper,  
             swiperSlide  
@@ -38,8 +44,28 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     freeMode : true, 
                     width: 120,
                     height: 70,
-
-                } 
+                },
+                imgList: [{
+                    itemUrl: slide01,
+                    name: '',
+                    path: '',
+                },{
+                    itemUrl: slide02,
+                    name: '',
+                    path: '',
+                },{
+                    itemUrl: slide03,
+                    name: '',
+                    path: '',
+                },{
+                    itemUrl: slide04,
+                    name: '',
+                    path: '',
+                },{
+                    itemUrl: slide05,
+                    name: '',
+                    path: '',
+                }],
     		}
     	},
         computed: {  

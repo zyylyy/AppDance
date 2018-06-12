@@ -5,8 +5,8 @@
 		</div>
 		<div class="box">
 			<div class="" v-for="item in iconList">
-				<img class="icon" src="../../assets/images/res_banner.jpg" alt="">
-				<p class="text font13">{{ item }}</p>
+                <img class="icon" :src="item.imgUrl" alt="">
+				<p class="text font13">{{ item.name }}</p>
 			</div>
 		</div>
 
@@ -23,6 +23,11 @@ import vueLetters from './components/letters.vue'  //快报
 import VueRank from './components/rank.vue'        //明星排行
 import vueMusic from './components/music.vue'      //最热音乐
 import vueStudents from './components/students.vue'//学员明星
+import starUrl01 from '../../assets/images/star01.png'
+import starUrl02 from '../../assets/images/star02.png'
+import starUrl03 from '../../assets/images/star03.png'
+import starUrl04 from '../../assets/images/star04.png'
+import starUrl05 from '../../assets/images/star05.png'
 
 export default {
 	name: "recommended",
@@ -34,7 +39,27 @@ export default {
     },
 	data(){
 		return {
-			iconList: ['明星', '会员', '赛事', '音乐', '照片'],
+            iconList: [{
+                path: '',
+                name: '明星',
+                imgUrl: starUrl01
+            },{
+                path: '',
+                name: '会员',
+                imgUrl: starUrl02
+            },{
+                path: '',
+                name: '赛事',
+                imgUrl: starUrl03
+            },{
+                path: '',
+                name: '音乐',
+                imgUrl: starUrl04
+            },{
+                path: '',
+                name: '照片',
+                imgUrl: starUrl05
+            }]
 		}
 	},
 	watch: {
@@ -63,14 +88,18 @@ export default {
             background-color: #fff;
             div {
                 flex:1;
+                position: relative;
                 .icon {
-                    width: 0.88rem;
-                    height: 0.88rem;
-                    border-radius: 0.34rem;
-                    display: inline-block;
+                    width: 1.2rem;
+                    height: 1.2rem;
                 }
                 .text {
                     color: #666;
+                    position: absolute;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    bottom: 0rem;
                 }
             }
         }
