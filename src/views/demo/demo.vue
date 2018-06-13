@@ -1,6 +1,7 @@
 <template>
     <div>
-        demo
+        <aPage @isLogFn = "lisLogFn"></aPage>
+        <bPage :isLog = "login"></bPage>
     </div>
 </template>
 
@@ -15,32 +16,41 @@
 </style>
 
 <script type="text/babel">
-	export default {
-		name: "demo",
-        data(){
-            return {
 
+import aPage from './components/a.vue'
+import bPage from './components/b.vue'
+
+export default {
+	name: "demo",
+    data(){
+        return {
+            login: 'false'
+        }
+    },
+    components: {
+        aPage,
+        bPage
+    },
+    computed: {
+
+    },
+    watch: {
+
+    },
+    created(){
+
+    },
+    mounted(){
+
+    },
+    methods: {
+        lisLogFn (data) {
+            if (data == 'log') {
+                this.login = 'true'
             }
-        },
-        components:{
-
-        },
-        computed: {
-
-        },
-        watch: {
-
-        },
-        created(){
-
-        },
-        mounted(){
-
-        },
-        methods: {
-
-        },
-	}
+        }
+    },
+}
 </script>
 <style lang="less" scoped>
     
