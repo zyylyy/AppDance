@@ -15,6 +15,10 @@ import '!style!css!less!./assets/css/common.less' // normalize重置浏览器样
 import './util/common'
 import 'swiper/dist/css/swiper.css'
 
+import FastClick from 'fastclick'               //处理移动端click事件300毫秒延迟
+FastClick.attach(document.body)                 //body绑定
+
+
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter)
 Vue.use(AppComponents)
