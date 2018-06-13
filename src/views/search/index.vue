@@ -138,8 +138,8 @@ export default {
             }
             .sertext {
                 flex:1;
-                background: #f8f8f8 url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
-                background-size: 0.38rem 0.38rem;
+                background: #f8f8f8 url('../../assets/images/sear.png') no-repeat 0.2rem 0.2rem;
+                background-size: 0.3rem 0.3rem;
                 padding-left: 0.4rem;
                 border-radius: 0.1rem;
                 position:relative;

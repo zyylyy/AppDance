@@ -4,7 +4,7 @@
         <div class="rank_box">
              <swiper :options="swiperOptionFreeMode"  ref="mySwiper" id="freemode">  
                 <swiper-slide v-for="(item, index) in 6"> 
-                    <img src="../../../assets/images/res_banner.jpg"> 
+                    <img src="../../../assets/images/img/slide01.png"> 
                     <p class="font18">
                         <em style="color:#FFB63E;">{{ index+1 }}&nbsp;&nbsp;</em>
                         <span class="font14" style="color: #000">第一名</span></p>

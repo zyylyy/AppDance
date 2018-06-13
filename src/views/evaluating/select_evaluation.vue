@@ -98,16 +98,16 @@ export default {
                     height: .7rem;
                     line-height: .7rem;
                     width: 2.4rem;
-                    background: #EFEFEF url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
-                    background-size: 0.38rem 0.38rem;
+                    background: #EFEFEF url('../../assets/images/sear.png') no-repeat 0.2rem 0.2rem;
+                    background-size: 0.3rem 0.3rem;
                     padding-left: 0.4rem;
                     border-radius: 0.5rem;
                 }
             }
             .sertext {
                 flex:1;
-                background: #EFEFEF url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
-                background-size: 0.38rem 0.38rem;
+                background: #EFEFEF url('../../assets/images/sear.png') no-repeat 0.2rem 0.2rem;
+                background-size: 0.3rem 0.3rem;
                 padding-left: 0.4rem;
                 border-radius: 0.5rem;
                 position:relative;

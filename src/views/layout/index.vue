@@ -65,8 +65,8 @@ export default {
             .search {
                 width: 1rem;
                 height: 100%;
-                background: #fff url('../../assets/images/sear.png') no-repeat 0.2rem 0.15rem;
-                background-size: 0.38rem 0.38rem;
+                background: #fff url('../../assets/images/sear.png') no-repeat 0.3rem 0.2rem;
+                background-size: 0.3rem 0.3rem;
             }
             .item {
                 flex:1;

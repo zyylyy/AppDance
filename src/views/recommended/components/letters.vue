@@ -18,7 +18,7 @@
 		            <div class="img_box">
 			            <p class="text font22">{{ item.title }}</p>
 			            <p class="con font11">{{ item.text }}</p>
-			            <p class="btn font12" @click="toCheck(item)">立即观看</p>
+			            <p class="btn font12" @click="toCheck(item)"></p>
 			            <p class="index font18">
 			            	{{ page}}
 			            	<span class="font12">/{{ swiper_boxList.length }}</span>
@@ -93,13 +93,13 @@ export default {
                 float: left;
                 .bulb_icon {
                     width: 0.5rem;
-                    height: 0.6rem;
+                    height: 0.5rem;
                     display: inline-block;
-                    background-image: url('../../../assets/images/bulb.svg');
+                    background-image: url('../../../assets/images/bulb.png');
                     background-repeat: no-repeat;
                     background-position: 0 0;
-                    background-size: 0.5rem .6rem;;
-                    margin-top: 50%;
+                    background-size: 0.5rem .5rem;;
+                    margin-top: 60%;
                 }
 
             }
@@ -149,7 +149,7 @@ export default {
             left: 0;
             bottom: 0;
             right: 0;
-            padding: 0 0.3rem;
+            padding: 0 0.5rem;
             text-align: left;
             padding-top: 1.2rem;
             .text {
@@ -160,13 +160,13 @@ export default {
                 color: #fff;
             }
             .btn {
-                width: 1.4rem;
-                height: 0.6rem;
-                line-height: 0.6rem;
-                text-align: center;
-                border-radius: 0.3rem;
-                background-color: #FFBB3E;
+                width: 1.6rem;
+                height: 0.8rem;
                 margin-top: 0.5rem;
+                background-image: url('../../../assets/images/watch_btn.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                background-size: 1.6rem 0.8rem;
             }
             .index {
                 position: absolute;
