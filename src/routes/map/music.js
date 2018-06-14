@@ -2,6 +2,7 @@ const music_home = resolve => require(['views/music/music_home.vue'], resolve)
 const my_music = resolve => require(['views/music/my_music.vue'], resolve)
 const today_recommended = resolve => require(['views/music/today_recommended.vue'], resolve)
 const hottest_music = resolve => require(['views/music/hottest_music.vue'], resolve)
+const add_music = resolve => require(['views/music/add_music.vue'], resolve)
 
 export default [
 	{
@@ -31,6 +32,13 @@ export default [
 		component: hottest_music,
 		meta: {
 			title: '最热音乐'
+		}
+	},{
+		path: '/add_music',
+		name: 'add_music',
+		component: add_music,
+		meta: {
+			title: '新建歌单'
 		}
 	}
 ]
