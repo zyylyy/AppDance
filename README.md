@@ -21,3 +21,4 @@
  4. 根据nav.js中对应path的权限,配置configs中的powers,配置说明见powers.js中的注释
  5. 配置configs的tips.js中对应的页面提示
  6. 新建对应的views services vuex开始开发
+ 7.http://mint-ui.github.io/docs/#/zh-cn2 
