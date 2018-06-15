@@ -14,7 +14,7 @@
 				分类舞种
 			</div>
 			<div class="box_list clearfix">
-				<li class="item" v-for="item in 10">
+				<li class="item" v-for="item in 10" @click="$router.push('/music_detail_list/top')">
 					<img src="../../assets/images/img/slide01.png" alt="">
 				</li>
 			</div>
@@ -38,7 +38,9 @@
 				}],
 
 			}
-		}
+		},
+        methods:{
+        }
 	}
 </script>
 <style lang="less" scoped>
