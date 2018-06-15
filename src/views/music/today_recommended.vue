@@ -11,10 +11,11 @@
         		<span class="right font12">30首</span>
         		<i class="icon"></i>
         	</div>
-        	<div class="lsit">
+        	<div class="list">
         		<li class="item font14" v-for="(item, index) in 6">
         			<span class="index">{{ index+1 }}</span>
         			<span class="name">{{ 'Afratican susent' }}</span>
+        			<img class="more_music" :src="more_music" alt="" @click.stop="showHandle">
         		</li>
         	</div>
         </div>
@@ -30,21 +31,95 @@
         		<li>3</li>
         	</div>
         </div>
+		<mt-popup
+		  v-model="popupVisible"
+		  position="bottom"
+		  popup-transition="popup-fade">
+			<div class="popup">
+				<li class="font12 box" style="text-indent: -.2rem;color: #999;">更多操作</li>
+				<li class="font15 box" v-for="item in headerList" @click="selectHandle">
+					<i class="icon"><img :src="item.imgUrl" alt=""></i>
+					{{ item.title }}
+				</li>
+			</div>
+		</mt-popup>
+
 	</div>
 </template>
 <script type="text/babel">
-	export default {
-		name: "today_recommended",
-		data(){
-			return {
 
-			}
+import local_music from '../../assets/images/local_music.svg'
+import collection_music from '../../assets/images/collection_music.svg'
+import recent_play_music from '../../assets/images/recent_play_music.svg'
+import more_music from '../../assets/images/more_music.png'
+
+export default {
+	name: "today_recommended",
+	data(){
+		return {
+			more_music: more_music,
+			popupVisible: false,
+			headerList: [{
+				imgUrl: local_music,
+				title: '下载歌曲',
+			},{
+				imgUrl: collection_music,
+				title: '收藏曲目',
+			},{
+				imgUrl: recent_play_music,
+				title: '加入歌单',
+			}],
 		}
+	},
+	methods:{
+		//
+		showHandle(){
+			this.popupVisible = true
+		},
+		//选中
+		selectHandle(item){
+			this.popupVisible = false
+		},
 	}
+}
 </script>
 <style lang="less" scoped>
     .today_recommended {
     	background-color: #f5f5f5;
+    	.mint-popup-bottom {
+    		width: 100%;
+    	}
+
+    	.popup {
+    		padding: 0 0.5rem;
+    		margin-bottom: 0.2rem;
+    		background-color: #fff;
+    		text-align: left;
+    		.box {
+    			position: relative;
+    			padding: 0.3rem 0;
+    			border-bottom: 0.01rem solid #EBEBEB;
+    			text-indent: 0.2rem;
+    			.icon {
+    				position: absolute;
+    				margin: auto;
+    				top: 0;
+    				left: -0.2rem;
+    				bottom: 0;
+    				width: 0.32rem;
+    				height: 0.32rem;
+    				img {
+    					width: 100%;
+    					height: 100%;
+    					float: left;
+    				}
+    			}
+    			&:last-child {
+    				border-bottom:0;
+    			}
+    		}
+    	}
+
         header{
             position:relative;
             width:100%;
@@ -61,7 +136,7 @@
         	width: 100%;
         	height: 1rem;
         	padding: 0 0.3rem;
-        	z-index: 9999;
+        	z-index: 999;
             .left {
             	float: left;
             	width: 0.72rem;
@@ -126,6 +201,12 @@
 					background: url('../../assets/images/add_music.svg') no-repeat 0rem 0;
 					background-size: 0.32rem .32rem;
 	            }
+        	}
+        	.more_music {
+        		height: 0.3rem;
+        		width: 0.2rem;
+        		right: -0.2rem;
+        		position: absolute;
         	}
         	.item {
         	    padding: 0.3rem 0;

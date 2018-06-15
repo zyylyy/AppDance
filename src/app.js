@@ -12,13 +12,16 @@ import infiniteScroll  from 'vue-infinite-scroll'
 import '!style!css!less!./assets/css/normalize.css' // normalize重置浏览器样式
 import '!style!css!less!./assets/css/common.less' // normalize重置浏览器样式
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
 import './util/common'
 import 'swiper/dist/css/swiper.css'
 
 import FastClick from 'fastclick'               //处理移动端click事件300毫秒延迟
 FastClick.attach(document.body)                 //body绑定
 
-
+Vue.use(MintUI)
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter)
 Vue.use(AppComponents)
