@@ -128,6 +128,7 @@ module.exports = {
          此字段配置如果不正确，发布后资源定位不对，比如：css里面的精灵图路径错误
          */
         publicPath: '/' + buildFolder + '/',
+        //publicPath: './',
         filename: production ? '[name].[hash].js' : '[name].js' //"build.[hash].js"//[hash]MD5戳   解决html的资源的定位可以使用 webpack提供的HtmlWebpackPlugin插件来解决这个问题  见：http://segmentfault.com/a/1190000003499526 资源路径切换
     },
     module: {
