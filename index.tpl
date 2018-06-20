@@ -5,6 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <meta name="format-detection" content="telephone=no,email=no,adress=no">
         <title>跳舞跳起来</title>
+        <script type="text/javascript">
+            (function(window, document) {
+                var deviceWidth = document.documentElement.clientWidth;
+                if (window.orientation == 90 || window.orientation == -90) {
+                    if (deviceWidth > 1334)
+                        deviceWidth = 1334;
+                    document.documentElement.style.fontSize = deviceWidth / 13.34 + 'px';
+                } else {
+                    if (deviceWidth > 750)
+                        deviceWidth = 750;
+                    document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+                }
+            })(window, document)
+        </script>
   </head>
   <body>
     <div id="app"></div>

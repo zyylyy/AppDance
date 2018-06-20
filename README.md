@@ -5,7 +5,7 @@
  ## 常用指令
  * npm install 初次启动时,需要运行npm install 安装所有开发依赖
  * npm run mb mac打包指令
- * npm run wb windows 打包指令
+ * npm run build windows 打包指令
  * npm run dev localhost启动,端口8080
  * npm run port localhost指定端口启动
  * npm run hot 热更新
