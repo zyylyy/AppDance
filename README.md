@@ -22,3 +22,25 @@
  5. 配置configs的tips.js中对应的页面提示
  6. 新建对应的views services vuex开始开发
  7.http://mint-ui.github.io/docs/#/zh-cn2 
+
+
+###目录结构
+
+<pre>
+├── README.md           
+├── webpack.config     // 构建服务和webpack配置,项目不同环境的配置
+├── dist               // 项目build目录
+├── index.tpl          // index.html模版
+├── index.html         // 项目入口文件
+├── package.json       // 项目配置文件
+├── src                // 生产目录
+│   ├── assets         // css js和图片资源
+│   ├── router         // 路由配置
+│   ├── components     // 各种组件
+│   ├── util           // 公共方法
+│   ├── static         // 静态资源文件
+│   ├── services       // ajax 服务配置
+│   ├── views          // 各种页面
+│   ├── vuex           // vuex状态管理器
+│   └── app.js         // Webpack 预编译入口
+</pre>
