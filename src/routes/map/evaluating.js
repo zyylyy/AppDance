@@ -1,5 +1,6 @@
 const evaluating = resolve => require(['views/evaluating/index.vue'], resolve)
 const select_evaluation = resolve => require(['views/evaluating/select_evaluation.vue'], resolve)
+const comments = resolve => require(['views/comments.vue'], resolve)
 
 export default [
     {
@@ -18,4 +19,12 @@ export default [
             title: '选择测评动作'
         }
     },
+    {
+        path: '/comments',
+        name: 'comments',
+        component: comments,
+        meta: {
+            title: '评论'
+        }  
+    }
 ]
