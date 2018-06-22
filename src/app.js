@@ -9,8 +9,9 @@ import store from './vuex'                       //vuex
 import {sync} from 'vuex-router-sync'            //vue-router 的狀態放進 vuex 的 state 中
 import cookie from 'js-cookie'                   //cookie set get ...
 import infiniteScroll  from 'vue-infinite-scroll'
-import '!style!css!less!./assets/css/normalize.css' // normalize重置浏览器样式
-import '!style!css!less!./assets/css/common.less' // normalize重置浏览器样式
+
+import '!style-loader!css-loader!less-loader!./assets/css/normalize.css'    // normalize重置浏览器样式
+import '!style-loader!css-loader!less-loader!./assets/css/common.less' // 引入公共样式
 
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
