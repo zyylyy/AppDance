@@ -4,18 +4,20 @@ import Vuex from 'vuex'
 import actions from './actions'
 import getters from './getters'
 import * as types from './mutationTypes'
-import {cloneDeep} from 'lodash'
+import { cloneDeep } from 'lodash'
 
 promisePolyfill.polyfill()
 Vue.use(Vuex)
 
 import demo from './modules/demo' // demo
+import tipMsg from './modules/tipMsg' // tipMsg
 
 export default new Vuex.Store({
 	actions,
 	getters,
 	modules: {
 		demo,
+		tipMsg,
 	}
 })
 
@@ -27,12 +29,13 @@ export default new Vuex.Store({
 //     },
 //     mutations:{
 //         //显式的更改state里的数据
+//         //fenfa 
 //     },
 //     getters:{
 //         //获取数据的方法
 //     },
 //     actions:{
-//         //
+//         //jifa 
 //     }
 // });
 //import { mapGetters, mapActions } from 'vuex'

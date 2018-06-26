@@ -1,7 +1,7 @@
 <template>
     <div>
-        <aPage @isLogFn = "lisLogFn"></aPage>
-        <bPage :isLog = "login"></bPage>
+<!--         <aPage @isLogFn = "lisLogFn"></aPage>
+        <bPage :isLog = "login"></bPage> -->
     </div>
 </template>
 
@@ -41,7 +41,10 @@ export default {
 
     },
     mounted(){
-
+        this.$store.commit("setTipMsg",{
+            tipState: true,
+            tipMsgText: '99999',
+        });
     },
     methods: {
         lisLogFn (data) {

@@ -3,6 +3,7 @@ import vueSwiperFreemode from './vueSwiperFreemode/index.vue'
 import vueTable from './vueTable/index.vue'
 import vueNoData from './vueNoData/index.vue'
 import vueUpLoad from './vueUpLoad/index.vue'
+import vueTipMsg from './vueTipMsg/index.vue'
 
 
 const install = Vue => {
@@ -11,6 +12,7 @@ const install = Vue => {
 	Vue.component(vueTable.name, vueTable)   //列表展示
 	Vue.component(vueNoData.name, vueNoData) //暂无数据
 	Vue.component(vueUpLoad.name, vueUpLoad) //没有更多
+	Vue.component(vueTipMsg.name, vueTipMsg) //提示信息
 }
 
 export default install
