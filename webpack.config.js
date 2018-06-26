@@ -85,20 +85,32 @@ if (process.env.PRODUCTION) {
     devtool = '#source-map'   // 生产环境不开启source-map
     devServer = {}   // 代理为空
 } else {
-    console.log('代理...')
+    console.log('开启代理...')
     devtool = '#eval-source-map'
     devServer = {
         historyApiFallback: true,
         host: 'localhost',
         proxy: {
-            '/Api/*': proxyApi,
-            '/api/*': proxyApi,
-            '/ImageTemp/*': proxyApi,
-            '/Import/*': proxyApi,
-            '/ImportImage/*': proxyApi,
-            '/Export/*': proxyApi,
-            '/Upload/*': proxyApi
+            // '/Api/*': proxyApi,
+            // '/api/*': proxyApi,
+            '/Api/*': {
+                target: proxyApi,
+                // pathRewrite: {'^/api' : ''}, //重写地址
+                // secure: false, // 处理https 的安全问题触发未验证的证书错误
+                // 绕过代理 必须返回 false 或路径，来跳过代理请求
+                // bypass: function(req, res, proxyOptions) {
+                //     if (req.headers.accept.indexOf("html") !== -1) {
+                //         console.log("Skipping proxy for browser request.");
+                //         return "/index.html";
+                //     }
+                // },
+            }
         },
+        //多个路劲的代理
+        // proxy: [{
+        //   context: ["/auth", "/api"],
+        //   target: proxyApi,
+        // }],
     }
 }
 
