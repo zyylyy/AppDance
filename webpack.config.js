@@ -175,12 +175,25 @@ module.exports = {
                 loader: "style-loader!css-loader!autoprefixer-loader?{ browsers: ['last 100 versions'] }!less-loader"
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif)(\?.*)?$/, //将svg去掉
+                // exclude: [
+                //     path.join(__dirname, 'src/assets'),
+                // ],
                 loader: 'url-loader',
                 options: {
                     limit: 10000
                 }
             },
+            // {
+            //     test: /\.svg$/,
+            //     include: [
+            //        path.join(__dirname, 'src/assets'),
+            //     ],
+            //     loader: 'svg-sprite?' + JSON.stringify({
+            //         name: '[name]',
+            //         prefixize: true,
+            //     }),
+            // },
             {
                 test: /\.(woff|woff2?|svg|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader'
