@@ -4,17 +4,6 @@
         <bPage :isLog = "login"></bPage> -->
     </div>
 </template>
-
-<style rel="stylesheet/less" lang="less" scoped>
-    div {
-        font-size: 0.14rem;
-        &.title {
-
-        }
-        text-align: left;
-    }
-</style>
-
 <script type="text/babel">
 
 import aPage from './components/a.vue'
@@ -41,10 +30,10 @@ export default {
 
     },
     mounted(){
-        this.$store.commit("setTipMsg",{
-            tipState: true,
-            tipMsgText: '99999',
-        });
+        // this.$store.commit("setTipMsg",{
+        //     tipState: true,
+        //     tipMsgText: '99999',
+        // });
     },
     methods: {
         lisLogFn (data) {

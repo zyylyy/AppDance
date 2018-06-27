@@ -7,7 +7,7 @@ const state = {
 
 const mutations = {
     [types.SETTIPMSG] (state, data){
-        state.tipState = data.tipState
+        state.tipState = data.tipState 
         state.tipMsgText = data.tipMsgText
     },
 };

@@ -69,7 +69,10 @@ export default {
 
     },
 	mounted(){
-		
+        this.$store.commit("setTipMsg",{
+            tipState: true,
+            tipMsgText: '99999999999',
+        });
 	},
 	methods: {
 

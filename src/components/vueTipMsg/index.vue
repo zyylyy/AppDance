@@ -1,6 +1,8 @@
 <template>
-	<div class="tip_msg font14" v-if="true">
-		<span class="msgwarp">{{ 'tipMsgText' }}</span>
+	<div class="ui-dialog">
+	    <div class="ui-dialog-cnt font14">
+	    	{{ tipMsg.tipMsgText }}
+	    </div>
 	</div>
 </template>
 <script>
@@ -15,9 +17,9 @@ export default {
 		return {}
 	},
 	watch: {
-		'tipState'() {	
-			if(this.tipState){
-				$(".tip_msg").fadeIn()
+		'tipMsg.tipState'() {	
+			if(this.tipMsg.tipState){
+				$(".ui-dialog").fadeIn()
 				setTimeout(()=>{
 					this.setTipMsg({
 				        tipState: false,
@@ -25,21 +27,19 @@ export default {
 					})
 				},1500)
 			}else{
-				$(".tip_msg").fadeOut()
+				$(".ui-dialog").fadeOut()
 			}
 		}
 	},
 	computed: {
       ...mapGetters([
-           'tipState',
-           'tipMsgText'
+           'tipMsg',
         ])
 	},
 	methods: {
 		...mapMutations(['setTipMsg']),
 	},
 	mounted() {
-		console.log(this.$store)
 		// mapActions
 	    // this.$store.dispatch("getTipMsg",{
 	    //   tipState: true,
@@ -55,15 +55,27 @@ export default {
 }
 </script>
 <style lang="less"  scoped>
-	.tip_msg {
-		width: 100%;
-		top: 45%;
-		z-index: 99999;
-		text-align: center;
-		display: none;
-		.msgwarp {
-			padding:5px 10px;
+
+	.ui-dialog.show {
+	    display: -webkit-box;
+	    display: box;
+	}
+	.ui-dialog {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    z-index: 9999;
+	    display: -webkit-box;
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-pack: center;
+	    -webkit-box-align: center;
+	    display: none;
+		.ui-dialog-cnt {
+			margin-top: 45%;
 			display: inline-block;
+			padding: 0.05rem 0.1rem;
 			background-color: rgba(0,0,0,0.65);
 			color: #FFFFFF;
 			border-radius: 5px;

@@ -135,6 +135,7 @@ module.exports = {
         build: './src/app.js'
     },
     output: {
+        // 将输出的文件都放到 buildFolder 目录下
         path: path.join(__dirname, buildFolder),
         /**
          publicPath路径就是你发布之后的路径，
@@ -188,6 +189,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)(\?.*)?$/, //将svg去掉
+                //// 不处理项目根目录下的 src/assets
                 // exclude: [
                 //     path.join(__dirname, 'src/assets'),
                 // ],
@@ -198,6 +200,7 @@ module.exports = {
             },
             // {
             //     test: /\.svg$/,
+            //     // 只对项目根目录下的 src/assets 目录中的文件采用 svg-sprite
             //     include: [
             //        path.join(__dirname, 'src/assets'),
             //     ],

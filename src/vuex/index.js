@@ -9,14 +9,12 @@ import { cloneDeep } from 'lodash'
 promisePolyfill.polyfill()
 Vue.use(Vuex)
 
-import demo from './modules/demo' // demo
 import tipMsg from './modules/tipMsg' // tipMsg
 
 export default new Vuex.Store({
 	actions,
 	getters,
 	modules: {
-		demo,
 		tipMsg,
 	}
 })
