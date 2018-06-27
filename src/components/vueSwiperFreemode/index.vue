@@ -100,7 +100,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
         .swiper-wrapper {
             width: 2.4rem;
             .swiper-slide{
-                width: 2.4rem;
+                width: 2.4rem !important;
                 position: relative;
                 .model {
                     position: absolute;

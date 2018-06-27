@@ -52,6 +52,14 @@ sync(store,router)
 router.afterEach((to, from, next) => {
     Vue.prototype.util.setTitle(to.meta.title)
 });
+
+// router.beforeEach((to, from, next) => {
+//     /* 路由发生变化修改页面title */
+//     if (to.meta.title) {
+//       document.title = to.meta.title
+//     }
+//     next();
+// });
 /**
 * [路由监控-没有登录的情况下跳转到登录页面]
 * @param  {[type]} (to,from,next [description]
