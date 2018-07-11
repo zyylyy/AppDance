@@ -5,6 +5,8 @@ import vueNoData from './vueNoData/index.vue'     //暂无数据 ui
 import vueUpLoad from './vueUpLoad/index.vue'     //没有信息 ui
 import vueTipMsg from './vueTipMsg/index.vue'     //全局提示信息 
 import vueLazyLoad from './vueLazyLoad/index.vue' //img 懒加载处理
+import imgUpload from './imgUpLoad/index.vue'     //图片上传
+import pickerTree from './pickerTree/index.vue'   //省市区选择
 
 const install = Vue => {
 	Vue.component(vueSwiper.name, vueSwiper) //轮播
@@ -14,6 +16,8 @@ const install = Vue => {
 	Vue.component(vueUpLoad.name, vueUpLoad) //没有更多
 	Vue.component(vueTipMsg.name, vueTipMsg) //提示信息
 	Vue.component(vueLazyLoad.name, vueLazyLoad)
+	Vue.component(imgUpload.name, imgUpload)
+	Vue.component(pickerTree.name, pickerTree)
 }
 
 export default install

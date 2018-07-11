@@ -1,39 +1,40 @@
 <template>
     <div class="my_profile">
-        <div class="batch-box uerImg">
-            <span class="types">头像</span>
-            <span class="texts">
-                <img :src="bulb" alt="">
-            </span>
-            <span class="pic"><img :src="arrow" alt=""></span>
+        <div @click="toEditProfile">
+            <div class="batch-box uerImg">
+                <span class="types">头像</span>
+                <span class="texts">
+                    <img :src="bulb" alt="">
+                </span>
+                <span class="pic"><img :src="arrow" alt=""></span>
+            </div>
+            <div class="batch-box">
+                <span class="types">昵称</span>
+                <span class="texts">
+                    <span v-if="true">请选择</span>
+                    <span class="yes_checkbox" v-else>{{  }}</span>
+                </span>
+                <span class="pic"><img :src="arrow" alt=""></span>
+            </div>
+            <div class="batch-box">
+                <span class="types">性别</span>
+                <span class="texts">
+                    <span v-if="true">请选择</span>
+                    <span class="yes_checkbox" v-else>{{  }}</span>
+                </span>
+                <span class="pic"><img :src="arrow" alt=""></span>
+            </div>
+            <div class="batch-box" style="margin-bottom: 0.2rem;">
+                <span class="types">生日</span>
+                <span class="texts">
+                    <span v-if="true">请选择</span>
+                    <span class="yes_checkbox" v-else>{{  }}</span>
+                </span>
+                <span class="pic"><img :src="arrow" alt=""></span>
+            </div>
         </div>
 
-        <div class="batch-box" @click="toEdit('昵称', params.val)">
-            <span class="types">昵称</span>
-            <span class="texts">
-                <span v-if="true">请选择</span>
-                <span class="yes_checkbox" v-else>{{  }}</span>
-            </span>
-            <span class="pic"><img :src="arrow" alt=""></span>
-        </div>
-        <div class="batch-box">
-            <span class="types">性别</span>
-            <span class="texts">
-                <span v-if="true">请选择</span>
-                <span class="yes_checkbox" v-else>{{  }}</span>
-            </span>
-            <span class="pic"><img :src="arrow" alt=""></span>
-        </div>
-        <div class="batch-box" style="margin-bottom: 0.2rem;">
-            <span class="types">生日</span>
-            <span class="texts">
-                <span v-if="true">请选择</span>
-                <span class="yes_checkbox" v-else>{{  }}</span>
-            </span>
-            <span class="pic"><img :src="arrow" alt=""></span>
-        </div>
-
-        <div class="batch-box">
+        <div class="batch-box" @click="toEdit('邀请码', params.val)">
             <span class="types">邀请码</span>
             <span class="texts">
                 <span v-if="true">请输入</span>
@@ -41,7 +42,7 @@
             </span>
             <span class="pic"><img :src="arrow" alt=""></span>
         </div>
-        <div class="batch-box" style="margin-bottom: 0.2rem;">
+        <div class="batch-box" style="margin-bottom: 0.2rem;" @click="toUploadCard">
             <span class="types">实名认证</span>
             <span class="texts">
                 <span v-if="true">未认证</span>
@@ -50,7 +51,7 @@
             <span class="pic"><img :src="arrow" alt=""></span>
         </div>
 
-        <div class="batch-box" >
+        <div class="batch-box" @click="showAddressPicker">
             <span class="types">所在城市</span>
             <span class="texts">
                 <span v-if="true">请选择</span>
@@ -58,14 +59,16 @@
             </span>
             <span class="pic"><img :src="arrow" alt=""></span>
         </div>
-        <div class="batch-box">
+        <div class="batch-box" @click="toEdit('个性签名', params.val)">
             <span class="types">个性签名</span>
             <span class="texts">
-                <span v-if="true">请选择</span>
+                <span v-if="true">请填写</span>
                 <span class="yes_checkbox" v-else>{{  }}</span>
             </span>
             <span class="pic"><img :src="arrow" alt=""></span>
         </div>
+
+        <pickerTree ref="pickerTree" @complete="getRegionArr"></pickerTree>
     </div>
 </template>
 <script type="text/babel">
@@ -89,7 +92,19 @@ export default {
     },
     methods: {
         toEdit(title, vals){
-            this.$router.push(`/edit_profile?title=${title}&vals=${vals}`)
+            this.$router.push(`/edit_text?title=${title}&vals=${vals}`)
+        },
+        toEditProfile(){
+            this.$router.push(`/edit_profile`)
+        },
+        toUploadCard(){
+            this.$router.push(`/upload_card`)
+        },
+        showAddressPicker(){
+            this.$refs.pickerTree.regionVisible = true
+        },
+        getRegionArr(arr){
+            console.log(arr)
         },
     },
 }

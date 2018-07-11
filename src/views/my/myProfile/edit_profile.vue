@@ -1,96 +1,137 @@
 <template>
     <div class="edit_profile">
-        <li><span>{{title}}：</span>
-            <input v-model="vals" placeholder="请填写" :maxlength="test_length" />
-            <img :src='delete_img' @click='del'/>
-        </li>
-        <div class="len-box">
-            <span :class="{'black': vals.length > 0}">{{ vals.length }}</span>/{{ test_length }}
+        <div class="box">
+            <img :src="portrait" alt="">
         </div>
-        <button>保存</button>
+        <div class="box">
+            <p  class="right">
+                <img :src="gender" alt="">
+                <span class="font12">男</span>
+            </p>
+            <p>
+                <img :src="gender" alt="">
+                <span class="font12">女</span>
+            </p>
+        </div>
+        <div class="box">
+            <div class='sertext font18'>
+                <p v-if="isName" @click="isName=false">{{ params.userName ? `昵称：${params.userName}` : '输入您的昵称' }}</p>
+                <input v-else type="text" @blur="editUserName" placeholder="输入动作名称" v-model.trim="params.userName" autofocus="autofocus" />
+            </div>
+        </div>
+        <div class="box" @click="openPicker">
+            <p class="font18">{{ params.dateTime ? `出生日期：${params.dateTime}` : '选择出生日期' }}</p>
+        </div>
+
+        <button type="button" class="font16">完成</button>
+
+        <mt-datetime-picker
+          ref="picker"
+          type="date"
+          year-format="{value} 年"
+          month-format="{value} 月"
+          date-format="{value} 日"
+          @confirm="handleConfirm">
+        </mt-datetime-picker>
     </div>
 </template>
 <script>
 
-import delete_img from '../../../assets/images/del.svg'
+import gender from '../../../assets/images/gender.png'
+import portrait from '../../../assets/images/portrait.png'
+import { DatetimePicker } from 'mint-ui'
+import moment from 'moment'// 格式化时间
 
 export default {
     name: 'edit_profile',
+    components: {
+        DatetimePicker
+    },
     data() {
         return {
-            delete_img : delete_img,
-            vals: this.$route.query.vals || '',
-            title: this.$route.query.title || '',
-            test_length: 15,
+            gender,
+            portrait,
+            params: {
+                userName: '',
+                dateTime: '',
+                userImgUrl: '',
+            },
+            isName: true,
+            startDate: new Date()
         }
     },
     mounted() {
-        this.util.setTitle(`${this.title}修改`)
+
     },
     methods: {
-        del(){
-            this.vals = ''
+        editUserName(){
+            this.isName = true
         },
-        save(){
-
+        openPicker () {
+          this.$refs.picker.open()
         },
+        handleConfirm (data) {
+          let date = moment(data).format('YYYY-MM-DD')
+          this.params.dateTime = date
+        }
     }
 }
 </script>
 <style lang="less" scoped>
     .edit_profile {
-    	input {
-            -webkit-user-select: auto;
-            width: 4.5rem;
-        }
-        margin-top: 0.2rem;
-        background: #f4f4f4;
-        font-size: 0.28rem;
-        li {
-            display: block;
-            margin-bottom: 0.2rem;
-            height: 1rem;
-            overflow: hidden;
-            background-color: #fff;
-            list-style-type: none;
-            border-bottom: 0.01rem solid #eee;
-            line-height: 1rem;
-            padding: 0 0.25rem;
-            span {
-                color: #666
-            }
-            img{
-                width: 0.32rem;
-                float: right;
-                margin-top: 0.35rem;
-            }
-        }
-        .len-box{
+        .box {
             display: flex;
-            justify-content: flex-end;
-            color: #999;
-            font-size: 0.3rem;
-            height: 0.3rem;
-            vertical-align: top;
-            margin-bottom: 1.3rem;
-            padding-right: 0.3rem;
-            .black{
-                color: #333;
+            -ms-flex-pack: center;
+            justify-content: center;
+            img {
+                width: 2rem;
+                height: 2rem;
+                margin: 1rem 0;
+            }
+            p {
+                position: relative;
+                img {
+                    width: 1rem;
+                    height: 1rem;
+                }
+                span {
+                    position: absolute;
+                    margin: auto;
+                    bottom: .5rem;
+                    right: 0;
+                    left: 0;
+                }
+            }
+            .right {
+                margin-right: 2rem;
+            }
+            .sertext {
+                flex:1;
+                background-size: 0.3rem 0.3rem;
+                padding: 1rem .4rem;
+                border-radius: 0.1rem;
+                position: relative;
+                input {
+                    width: 88%;
+                    height: 0.7rem;
+                    -webkit-user-select: auto;
+                }
+                p{
+                    height: 0.7rem;
+                    line-height: 0.7rem;
+                }
             }
         }
         button {
-            width: 80%;
+            width: 100%;
             display: block;
-            color: #fff;
-            font-size: 0.32rem;
-            margin-top: 1.2rem;
-            margin: auto;
-            text-align: center;
-            height: 0.88rem;
-            line-height: 0.88rem;
-            background: #867ae4;
-            border-radius: 0.08rem;
+            color: #F8BD50;
+            height: 1rem;
+            line-height: 1rem;
+            background: #181818;
             border: none;
+            position: fixed;
+            bottom: 0;
         }
     }
 </style>
