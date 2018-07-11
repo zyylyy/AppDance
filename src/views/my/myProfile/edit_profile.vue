@@ -73,7 +73,7 @@ export default {
         handleConfirm (data) {
           let date = moment(data).format('YYYY-MM-DD')
           this.params.dateTime = date
-        }
+        },
     }
 }
 </script>
