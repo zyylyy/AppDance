@@ -29,6 +29,9 @@ import starUrl03 from '../../assets/images/star03.png'
 import starUrl04 from '../../assets/images/star04.png'
 import starUrl05 from '../../assets/images/star05.png'
 
+
+import { demo as ajax } from '../../services/index.js'
+
 export default {
 	name: "recommended",
     components:{
@@ -69,10 +72,23 @@ export default {
 
     },
 	mounted(){
-        this.$store.commit("setTipMsg",{
-            tipState: true,
-            tipMsgText: '99999999999',
-        });
+        // this.$store.commit("setTipMsg",{
+        //     tipState: true,
+        //     tipMsgText: '99999999999',
+        // });
+        ajax.getDanceListType().then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+        
+        ajax.getDanceinfo().then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+        console.log('ajax')
 	},
 	methods: {
 

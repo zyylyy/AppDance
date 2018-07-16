@@ -2,9 +2,11 @@
 import 'whatwg-fetch';
 import { rootPath, errHandler } from './config';
 import store from '../../vuex';
-import actions from '../../vuex/actions';
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import cookie from 'js-cookie';
 import '../../util/common';
+
+console.log()
 
 /**
  * 检查ajax返回的状态码,如果为401,则跳转到登录页
@@ -22,12 +24,12 @@ const checkStatus = function(response) {
     }
     else {
         // 如果没有登录,则跳转到登录页面
-        if (response.status === 401) {
-            cookie.remove('authToken')
-            cookie.remove('userInfo')
-            actions.clearAuth(store)
-            window.location = '/#/login'
-        }
+        // if (response.status === 401) {
+        //     cookie.remove('authToken')
+        //     cookie.remove('userInfo')
+        //     actions.clearAuth(store)
+        //     window.location = '/#/login'
+        // }
         const error = new Error(response.statusText);
         error.response = response;
         throw error;
@@ -57,10 +59,10 @@ const ajax = ({
     url = throwIfMissing('url'),
     formJson = true,
     body = null,
-    headersData = { 'Content-Type': 'application/json; charset=utf-8' },
+    headersData = { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
     method = 'get',
     path = rootPath,
-    isShowFullLoading = false,
+    //isShowFullLoading = false,
     auth = false,
     isShowError = true,
 }) => {
@@ -95,52 +97,17 @@ const ajax = ({
         options.body = bodyString;
     }
 
-    if (isShowFullLoading) {
-        actions.showHUD(store)
-    }
+
     return new Promise((resolve, reject) => {
         fetch(path + url, options)
             .then(checkStatus)
             .then((response) => response.json())
             .then((result) => {
-                if (isShowFullLoading) {
-                    actions.hideHUD(store)
-                }
-
-                if (!formJson) {
-                    resolve(result)
-                    return
-                }
-
-                // 返回正确数据
-                if (result.resultCode === 1 || result.ResultCode === 1) {
-                    resolve(result.data)
-                }
-                else {
-                    // 处理后端抛出错误
-                    reject(result.errorMessage)
-                    if (isShowError) {
-                        actions.showHUD(store, {
-                            type: 'error',
-                            content: result.errorMessage
-                        })
-                    }
-                }
+                resolve(result)
             })
             .catch((error) => {
                 // 显示错误提示
-                if (!formJson) {
-                    actions.showHUD(store, {
-                        type: 'error',
-                        content: '账号或密码错误'
-                    })
-                }
-                else {
-                    actions.showHUD(store, {
-                        type: 'error',
-                        content: error
-                    })
-                }
+                console.log(error)
             });
     });
 };

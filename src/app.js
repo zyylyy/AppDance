@@ -38,7 +38,7 @@ Vue.use(infiniteScroll)
 Vue.use(VueScroller)
 
 const router = new VueRouter ({
-	mode: 'hash',//history
+	mode: 'history',//hash
 	routes: [
 		...routes,
 	]
@@ -52,57 +52,6 @@ sync(store,router)
 router.afterEach((to, from, next) => {
     Vue.prototype.util.setTitle(to.meta.title)
 });
-
-// router.beforeEach((to, from, next) => {
-//     /* 路由发生变化修改页面title */
-//     if (to.meta.title) {
-//       document.title = to.meta.title
-//     }
-//     next();
-// });
-/**
-* [路由监控-没有登录的情况下跳转到登录页面]
-* @param  {[type]} (to,from,next [description]
-* @return {[type]}               [description]
-*/
-// router.beforeEach((to, from, next) => {
-// 	if (to.matched.some(record => record.meta.auth)) {
-// 		if (cookie.get('login')) {
-// 			if (!store.getters.authToken || store.getters.authToken == '') {
-//                 if (to.fullPath == '/gesture') {
-//                     next()
-//                 }
-//                 else {
-//                     next('gesture')
-//                 }
-// 			}
-// 			else {
-//                 if (to.fullPath == '/') {
-//                     next('home')
-//                 }
-//                 else {
-//                     next()
-//                 }
-// 			}
-// 		}
-// 		else {
-// 			next('login')
-// 		}
-// 	}
-// 	else {
-//         if (to.fullPath == '/') {
-//             if (cookie.get('login')) {
-//                 next('gesture')
-//             }
-//             else {
-//                 next('login')
-//             }
-//         }
-//         else {
-//             next()
-//         }
-// 	}
-// })
 
 new Vue({
 	store,
