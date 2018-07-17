@@ -10,7 +10,7 @@
             <span @click="toSearch" class="search font14"></span>
 		</div>
 		<div class="content">
-            <router-view></router-view>
+            <!-- <router-view></router-view> -->
 		</div>
 	</div>
 </template>

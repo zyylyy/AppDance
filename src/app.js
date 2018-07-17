@@ -9,6 +9,7 @@ import store from './vuex'                       //vuex
 import {sync} from 'vuex-router-sync'            //vue-router 的狀態放進 vuex 的 state 中
 import cookie from 'js-cookie'                   //cookie set get ...
 import infiniteScroll  from 'vue-infinite-scroll'
+// import Tab from 'vue-swipe-tab'
 
 import '!style-loader!css-loader!less-loader!./assets/css/normalize.css'  // normalize重置浏览器样式
 import '!style-loader!css-loader!less-loader!./assets/css/common.less'    // 引入公共样式
@@ -36,6 +37,7 @@ Vue.use(VueRouter)
 Vue.use(AppComponents)
 Vue.use(infiniteScroll)
 Vue.use(VueScroller)
+// Vue.use(Tab)
 
 const router = new VueRouter ({
 	mode: 'history',//hash

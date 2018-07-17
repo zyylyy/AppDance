@@ -4,7 +4,7 @@
             <div class="batch-box uerImg">
                 <span class="types">头像</span>
                 <span class="texts">
-                    <img :src="bulb" alt="">
+                    <img :src="user_img" alt="">
                 </span>
                 <span class="pic"><img :src="arrow" alt=""></span>
             </div>
@@ -74,14 +74,14 @@
 <script type="text/babel">
 
 import arrow from '../../../assets/images/arrow.png'
-import bulb from '../../../assets/images/bulb.png'
+import user_img from '../../../assets/images/user_img.png'
 
 export default {
 	name: "my_profile",
     data(){
         return {
             arrow,
-            bulb,
+            user_img,
             params: {
                 val: '',
             }
@@ -133,6 +133,10 @@ export default {
                 text-align: right;
                 .yes_checkbox {
                     color:#333;
+                }
+                img {
+                    width: 1rem;
+                    height: 1rem;
                 }
             }
             .pic{

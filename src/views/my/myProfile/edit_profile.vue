@@ -1,15 +1,15 @@
 <template>
     <div class="edit_profile">
         <div class="box">
-            <img :src="portrait" alt="">
+            <img :src="user_img" alt="">
         </div>
         <div class="box">
-            <p  class="right">
-                <img :src="gender" alt="">
+            <p  class="right" @click="selectGender('male')">
+                <img :src="params.gender == 'male' ? male_yes : male_no" alt="">
                 <span class="font12">男</span>
             </p>
-            <p>
-                <img :src="gender" alt="">
+            <p @click="selectGender('woman')">
+                <img :src="params.gender == 'woman' ? woman_yes : woman_no" alt="">
                 <span class="font12">女</span>
             </p>
         </div>
@@ -37,8 +37,12 @@
 </template>
 <script>
 
-import gender from '../../../assets/images/gender.png'
-import portrait from '../../../assets/images/portrait.png'
+import user_img from '../../../assets/images/user_img.png'
+import male_yes from '../../../assets/images/male_yes.png'
+import male_no from '../../../assets/images/male_no.png'
+import woman_no from '../../../assets/images/woman_no.png'
+import woman_yes from '../../../assets/images/woman_yes.png'
+
 import { DatetimePicker } from 'mint-ui'
 import moment from 'moment'// 格式化时间
 
@@ -49,12 +53,17 @@ export default {
     },
     data() {
         return {
-            gender,
-            portrait,
+            male_yes,
+            male_no,
+            woman_yes,
+            woman_no,
+            user_img,
+
             params: {
                 userName: '',
                 dateTime: '',
                 userImgUrl: '',
+                gender: 'male',
             },
             isName: true,
             startDate: new Date()
@@ -73,6 +82,9 @@ export default {
         handleConfirm (data) {
           let date = moment(data).format('YYYY-MM-DD')
           this.params.dateTime = date
+        },
+        selectGender(status){
+            this.params.gender = status
         },
     }
 }
