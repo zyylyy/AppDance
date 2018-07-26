@@ -1,4 +1,5 @@
 var proxyApi = 'http://172.16.78.136:80' // 代理服务器
+//var proxyApi = 'http://fw5f7p.natappfree.cc'
 // 先清空 build 文件夹下的文件
 var buildFolder = 'dist'
 var fs = require('fs')
